@@ -1,43 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import * as data from '../../jokes-data/jokes-json.json';
-
+import { Component } from '@angular/core';
+import data from '../../jokes-data/jokes-json.json';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { jokeDetailsComponent } from '../../components/joke-details.component'
 export interface PeriodicElement {
-    name: string;
-    position: number;
-    weight: number;
-    symbol: string;
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
 
 @Component({
-    selector: 'app-table',
-    templateUrl: './table.component.html',
-    styleUrls: ['./table.component.css']
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
-    allJokes: any;
-    displayedColumns: string[] = ['id', 'name',];
+export class TableComponent {
+    constructor(private dialog: MatDialog) {}
 
-    dataSource = [
-        { id: 1, name: 'Item 1' },
-        { id: 2, name: 'Item 2' },
+    displayedColumns: string[] = ['category', 'type', 'setup'];
+    dataSource = data.data;
 
-      ];
-
-    ngOnInit(): void {
-
+    getRandomJoke(jokes: string | any[]) {
+        let randomIndex = Math.floor((Math.random() * jokes.length));
+        return jokes[randomIndex];
     }
 
+    openModal(row: any) {
+        const suggestedArr = [];
+        for (let i = 0; suggestedArr.length < 5; i++) {
+            const suggestedJokes = this.getRandomJoke(data.data);
+            if(suggestedJokes.type == row.type) {
+                suggestedArr.push(suggestedJokes);
+            }
+        }
+        this.dialog.open(jokeDetailsComponent, {
+            width: '1000px',
+            height: '500px',
+            data: {
+                row,
+                suggestedArr,
+            }
+        });
+    }
 }
-

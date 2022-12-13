@@ -1,0 +1,43 @@
+<div>
+    <h1 mat-dialog-title class="headers">Joke Details</h1>
+    <div mat-dialog-content>
+        <table class="table">
+            <thead class="table-header">
+                <tr>
+                    <td class="bold">Id</td>
+                    <td class="bold">Category</td>
+                    <td class="bold">Type</td>
+                    <td class="bold">Setup</td>
+                    <td class="bold">Delivery</td>
+                    <td class="bold">Flags</td>
+                    <td class="bold">Error</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{data.row.id}}</td>
+                    <td>{{data.row.category}}</td>
+                    <td>{{data.row.type}}</td>
+                    <td>{{data.row.setup}}</td>
+                    <td>{{data.row.delivery}}</td>
+                    <td>{{data.row.flags}}</td>
+                    <td>{{data.row.error}}</td>
+                </tr>
+                <h1 mat-dialog-title class="headers center">suggestions</h1>
+                <tr *ngFor="let item of data.suggestedArr">
+                    <td>{{item.id}}</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.type}}</td>
+                    <td>{{item.setup}}</td>
+                    <td>{{item.delivery}}</td>
+                    <td>{{item.flags}}</td>
+                    <td>{{item.error}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="onExit()">Exit</button>
+    </div>
+</div>
+

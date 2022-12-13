@@ -1,0 +1,23 @@
+.body {
+    max-width: 80%;
+    margin-left: 10%;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+  }
+
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }

@@ -1,0 +1,18 @@
+table {
+    table-layout: fixed;
+    width: 100%;
+    /* border-collapse: collapse;
+    border: 3px solid purple; */
+}
+
+.headers {
+    text-decoration: underline;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.table-header {
+    text-decoration: underline;
+}
