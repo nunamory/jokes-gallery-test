@@ -1,0 +1,18 @@
+<mat-card class="example-card">
+
+    <mat-card-content>
+        <form>
+            <h2>Log In</h2>
+            <mat-form-field>
+                <input matInput type="text" placeholder="username" [formControl]="username" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="text" placeholder="password" [formControl]="password" required>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="login()">Login</button>
+        </form>
+    </mat-card-content>
+
+</mat-card>
